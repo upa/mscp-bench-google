@@ -2,6 +2,9 @@
 
 import statistics as st
 import glob
+import json
+
+link = "ens4"
 
 def parse_tx_throughput(fn):
 
@@ -12,11 +15,15 @@ def parse_tx_throughput(fn):
         for s in stats:
             for dev_stat in s["network"]["net-dev"]:
                 if dev_stat["iface"] == link:
-                    thr = dev_stat["txkB"] * 8 / 1000 / 1000 # Gbps
+                    thr = dev_stat["txkB"] * 8 / 1000 # Mbps
                     bpses.append(thr)
     return bpses
 
-def get_peek_speed()
+def get_peek_speed(pathname):
+    bpses = []
+    for fn in glob.glob(pathname):
+        bpses += parse_tx_throughput(fn)
+    return max(bpses)
 
 def parse_rtt(reg):
     with open("rtts/{}.rtt.txt".format(reg), "r") as f:
@@ -33,18 +40,20 @@ def main():
 
     regions = ["osaka", "oregon", "sydney"]
 
-    print("Region    RTT   mscp/stdev     scp/stdev   improve  reduction")
-    print("-------------------------------------------------------------")
+    print("Region    RTT   mscp stdev     scp stdev  mscp peak  scp peak  improve  reduction")
+    print("---------------------------------------------------------------------------------")
     for reg in regions:
         mscp_times = []
         scp_times = []
         for fn in glob.glob("dat/{}/mscp/duration-*.txt".format(reg)):
             with open(fn, "r") as f:
                 mscp_times.append(float(f.read().strip()))
-                
+        mscp_peak = get_peek_speed("dat/{}/mscp/sysstat-*.sar.net.json".format(reg))
+
         for fn in glob.glob("dat/{}/scp/duration-*.txt".format(reg)):
             with open(fn, "r") as f:
                 scp_times.append(float(f.read().strip()))
+        scp_peak = get_peek_speed("dat/{}/scp/sysstat-*.sar.net.json".format(reg))
 
         avg, mdev = parse_rtt(reg)
         
@@ -57,7 +66,8 @@ def main():
                                                              st.stdev(mscp_times),
                                                              st.mean(scp_times),
                                                              st.stdev(scp_times)) +
-              "   {:>5.2f}".format(mean_scp / mean_mscp) +
+              "  {:>8.2f}  {:>8.2f}".format(mscp_peak, scp_peak) +
+              "   {:>5.2f}".format(mscp_peak / scp_peak) +
               "     {:>5.1f}%".format((mean_scp - mean_mscp) / mean_scp * 100)
               )
 
