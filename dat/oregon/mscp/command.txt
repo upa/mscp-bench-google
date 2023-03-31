@@ -1,0 +1,1 @@
+mscp -n 56 -m 0xffff -a 128 -v /var/ram/test.img 10.138.0.3:/var/ram/
