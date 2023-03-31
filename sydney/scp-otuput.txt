@@ -1,3 +1,0 @@
-tokyo ~/w/mscp-bench-google > ./run-with-sar.sh scp /var/ram/test.img 10.152.0.2:/var/ram/
-test.img                                                 33% 3478MB  18.8MB/s   05:59 ETA^C./run-with-sar.sh: line 14: kill: (13044) - No such process
-t

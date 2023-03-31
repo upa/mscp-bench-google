@@ -1,3 +1,5 @@
 tokyo ~/w/mscp-bench-google > ./run-with-sar.sh scp /var/ram/test.img 10.174.0.4:/var/ram/
 test.img                                                100%   10GB 187.8MB/s   00:54
-
+./run-with-sar.sh: line 18:  6137 Killed                  $sar_cmd > /dev/null 2>&1
+tokyo ~/w/mscp-bench-google >                                          54.897s main? 16:29
+t

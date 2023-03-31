@@ -1,0 +1,5 @@
+tokyo ~/w/mscp-bench-google > ./run-with-sar.sh scp /var/ram/test.img 10.138.0.3:/var/ram/test.img
+test.img                                                100%   10GB  21.7MB/s   07:50
+tokyo ~/w/mscp-bench-google >                                        473.665s main!? 17:03
+
+
