@@ -1,0 +1,74 @@
+# based on ggplot.mpstyle
+
+patch.linewidth: 0.5
+patch.facecolor: 348ABD  # blue
+patch.edgecolor: EEEEEE
+patch.antialiased: True
+
+font.size: 14.0
+font.family: sans-serif
+font.sans-serif: Helvetica
+
+#axes.facecolor: E5E5E5
+#axes.facecolor: EEEEEE
+axes.facecolor: eaeaea
+axes.grid: True
+axes.titlesize: x-large
+axes.labelsize: large
+axes.labelcolor: 000000
+axes.axisbelow: True       # grid/ticks are below elements (e.g., lines, text)
+
+axes.spines.left: False
+axes.spines.bottom: False
+axes.spines.top: False
+axes.spines.right: False
+axes.edgecolor: 393939
+
+# Set1
+#axes.prop_cycle: cycler('color', ['e72612', '4388c2', '54b84e', 'a757af', 'fe8d00', 'fdff09', 'af6426', 'f87dc7', 'a3a3a3'])
+
+# Modified Set1
+#axes.prop_cycle: cycler('color', ['e72612', '4388c2', '54b84e', '545857', 'fe8d00', 'a757af', 'af6426', 'f87dc7', 'a3a3a3'])
+
+# Modified Set1 with linestyle and marker cycles
+#axes.prop_cycle: (cycler('color', ['e72612', '4388c2', '54b84e', '545857', 'fe8d00', 'a757af', 'a3a3a3', "f87dc7"]) + cycler('linestyle', ['-', '--', "-.", ":", "-", "--", "-.", ":"]) + cycler('marker', ["o", "x", "s", "+", "v", "h", "^", "d" ]))
+
+# New Tableau
+axes.prop_cycle: (cycler('color', ['4e79a7', 'f28e2b', 'e15759', '76b7b2', '59a14e', 'edc949', 'b07aa2', "9c755f"]) + cycler('linestyle', ['-', '--', "-.", ":", "-", "--", "-.", ":"]) + cycler('marker', ["o", "x", "s", "+", "v", "h", "^", "d" ]))
+
+# Tol_muted
+#axes.prop_cycle: (cycler('color', ['88ccee', '44aa99', '117733', '332288', 'ddcc77', '999933', 'cc6677', '882255']) + cycler('linestyle', ['-', '--', "-.", ":", "-", "--", "-.", ":"]) + cycler('marker', ["o", "x", "s", "+", "v", "h", "^", "d" ]))
+
+#axes.prop_cycle: (cycler('color', ['88ccee', '44aa99', '332288', '117733', 'ddcc77', '999933', 'cc6677', '882255']) + cycler('linestyle', ['-', '--', "-.", ":", "-", "--", "-.", ":"]) + cycler('marker', ["o", "x", "s", "+", "v", "h", "^", "d" ]))
+
+lines.linewidth: 1.2
+lines.markersize: 9
+lines.markeredgewidth: 1.2
+markers.fillstyle: none
+
+
+xtick.color: 000000
+xtick.direction: out
+xtick.labelsize: large
+
+ytick.color: 000000
+ytick.direction: out
+ytick.labelsize: large
+
+grid.color: white
+grid.linestyle: -
+grid.linewidth: 1
+
+legend.facecolor: white
+legend.frameon: True
+legend.framealpha: 1.0
+legend.fontsize: medium
+
+figure.facecolor: white
+figure.edgecolor: 0.50
+
+
+savefig.pad_inches: 0.05
+savefig.bbox: tight
+ps.fonttype: 42
+pdf.fonttype: 42
