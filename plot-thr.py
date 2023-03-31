@@ -27,6 +27,8 @@ def main():
     parser.add_argument("-r", "--region", choices = ["osaka", "oregon", "sydney"],
                         default = "osaka",
                         help = "region to be plotted")
+    parser.add_argument("-i", "--niter", type = int, default = 5,
+                        help = "iteration number to be plotted")
     parser.add_argument("-a", "--aspect", type = float, default = 0.5,
                         help = "graph aspect")
     parser.add_argument("-z", "--zoom", type = float, default = 1.0,
@@ -36,7 +38,8 @@ def main():
 
     args = parser.parse_args()
 
-    bpses = parse_tx_throughput("{}/mscp.sar.net.json".format(args.region))
+    fn = "dat/{}/mscp/sysstat-{}.sar.net.json".format(args.region, args.niter)
+    bpses = parse_tx_throughput(fn)
     print("Gbps: {}".format(" ".join(map(lambda x: "{:.2f}".format(x), bpses))))
 
     width = 6.4 * args.zoom
@@ -46,7 +49,7 @@ def main():
     xaxis = list(range(1, len(bpses) + 1))
 
     ax.plot(xaxis, bpses, marker = "")
-    ax.set_ylim(0, 10)
+    #ax.set_ylim(0, 10)
     ax.set_ylabel("throughput (Gbps)")
 
     ax.set_xlim([min(xaxis) - 1, max(xaxis) + 1])
