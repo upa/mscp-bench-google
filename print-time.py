@@ -42,7 +42,7 @@ def main():
 
 
     print("Region        RTT   mscp stdev     scp stdev  mscp peak  scp peak  improve  reduction")
-    print("---------------------------------------------------------------------------------")
+    print("-----------------------------------------------------------------------------------")
     for reg in regions:
         mscp_times = []
         scp_times = []
@@ -62,13 +62,13 @@ def main():
         mean_scp = st.mean(scp_times)
         
 
-        print("{:10} {:>6.2f}   ".format(reg, avg) +
-              "{:>4.2f} {:>4.2f}   {:>7.2f} {:>4.2f}".format(st.mean(mscp_times),
+        print("{:10} {:>6.1f}   ".format(reg, avg) +
+              "{:>4.1f} {:>4.1f}   {:>7.1f} {:>4.1f}".format(st.mean(mscp_times),
                                                              st.stdev(mscp_times),
                                                              st.mean(scp_times),
                                                              st.stdev(scp_times)) +
-              "  {:>8.2f}  {:>8.2f}".format(mscp_peak, scp_peak) +
-              "   {:>5.2f}".format(mscp_peak / scp_peak) +
+              "  {:>8.1f}  {:>8.1f}".format(mscp_peak, scp_peak) +
+              "   {:>5.1f}".format(mscp_peak / scp_peak) +
               "     {:>5.1f}%".format((mean_scp - mean_mscp) / mean_scp * 100)
               )
 
