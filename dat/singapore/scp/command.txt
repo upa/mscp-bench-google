@@ -1,0 +1,1 @@
+scp /var/ram/test.img 10.148.0.2:/var/ram/
