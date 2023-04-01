@@ -38,9 +38,10 @@ def parse_rtt(reg):
 
 def main():
 
-    regions = ["osaka", "oregon", "sydney"]
+    regions = ["osaka", "singapore", "oregon", "sydney"]
 
-    print("Region    RTT   mscp stdev     scp stdev  mscp peak  scp peak  improve  reduction")
+
+    print("Region        RTT   mscp stdev     scp stdev  mscp peak  scp peak  improve  reduction")
     print("---------------------------------------------------------------------------------")
     for reg in regions:
         mscp_times = []
@@ -61,7 +62,7 @@ def main():
         mean_scp = st.mean(scp_times)
         
 
-        print("{:6} {:>6.2f}   ".format(reg, avg) +
+        print("{:10} {:>6.2f}   ".format(reg, avg) +
               "{:>4.2f} {:>4.2f}   {:>7.2f} {:>4.2f}".format(st.mean(mscp_times),
                                                              st.stdev(mscp_times),
                                                              st.mean(scp_times),
